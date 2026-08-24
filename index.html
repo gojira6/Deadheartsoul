@@ -1539,7 +1539,137 @@ h2 {
     border-color: var(--wine);
 }
 
+/* TONIGHT'S LINE */
 
+.tonight-line {
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 110px 7%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(84,23,35,.16),
+            transparent 65%
+        );
+}
+
+.tonight-line::before {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(123,36,52,.12),
+        transparent 70%
+    );
+
+    animation: tonightGlow 7s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes tonightGlow {
+    0%,100% {
+        opacity: .35;
+        transform: translate(-50%, -50%) scale(.85);
+    }
+
+    50% {
+        opacity: .8;
+        transform: translate(-50%, -50%) scale(1.12);
+    }
+}
+
+.tonight-label {
+    position: relative;
+    z-index: 2;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 8px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+
+    color: var(--wine2);
+
+    margin-bottom: 40px;
+}
+
+.tonight-quote {
+    position: relative;
+    z-index: 2;
+
+    max-width: 760px;
+    margin: auto;
+
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+
+    font-size: clamp(30px, 5vw, 55px);
+    line-height: 1.35;
+
+    color: var(--ivory);
+
+    animation: quoteAppear 1.5s ease both;
+}
+
+@keyframes quoteAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tonight-author {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 35px;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 8px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+
+    color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tonight-line::before,
+    .tonight-quote {
+        animation: none;
+    }
+}
+
+@media(max-width:700px) {
+
+    .tonight-line {
+        margin: 40px 22px;
+        padding: 80px 25px;
+    }
+
+    .tonight-quote {
+        font-size: 29px;
+    }
+
+}
 /* =========================================================
    FOOTER
    ========================================================= */
@@ -1748,7 +1878,46 @@ footer {
 </style>
 </head>
 
+<!-- TONIGHT'S LINE -->
 
+<section class="tonight-line">
+
+    <div class="tonight-label">
+        TONIGHT'S LINE
+    </div>
+
+    <div class="tonight-quote" id="tonightQuote">
+        “Bujhta jaa raha hai jalta chiraagh mera.”
+    </div>
+
+    <div class="tonight-author">
+        — Suhail Anjum
+    </div>
+
+</section>
+
+<script>
+
+const lines = [
+    "Bujhta jaa raha hai jalta chiraagh mera.",
+    "Ye ishq hai na… bas utna ruka hua hai.",
+    "Maine ghar saja rakha, tum aakar raho toh sahi.",
+    "Tera jaana aasaan lagta hi hoga tujhe.",
+    "Main apni hi nazron mein adhoora ho gaya hoon.",
+    "Kuch cheezein kehne se zyada likhne ke liye hoti hain.",
+    "Mere khayal, mere jazbaat — bas wahi ruke hue hain.",
+    "If I choose to be nothing else, I choose to be yours."
+];
+
+const randomLine =
+    lines[Math.floor(Math.random() * lines.length)];
+
+document.getElementById("tonightQuote").textContent =
+    "“" + randomLine + "”";
+
+</script>
+
+</body>
 <body>
 
 
