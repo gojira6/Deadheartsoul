@@ -1,612 +1,1026 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>DeadHeart Soul</title>
+<title>DeadHeart Soul — Where a Dead Soul Keeps Writing</title>
 
-    <meta name="description" content="DeadHeart Soul — where broken hearts become poetry.">
+<meta name="description" content="DeadHeart Soul — poetry, music, thoughts and everything that was too difficult to say.">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap');
 
-        html {
-            scroll-behavior: smooth;
-        }
+:root {
+    --black: #080808;
+    --black-soft: #0d0d0d;
+    --ivory: #e8e2d8;
+    --muted: #8c8985;
+    --wine: #641827;
+    --wine-light: #8b2638;
+    --line: #242424;
+}
 
-        body {
-            background: #090909;
-            color: #eeeeee;
-            font-family: Georgia, "Times New Roman", serif;
-            line-height: 1.7;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        /* NAVIGATION */
+body {
+    background: var(--black);
+    color: var(--ivory);
+    font-family: "Cormorant Garamond", Georgia, serif;
+    overflow-x: hidden;
+}
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(9, 9, 9, 0.82);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            border-bottom: 1px solid #222;
-        }
+/* subtle film grain */
 
-        .logo {
-            font-size: 18px;
-            letter-spacing: 4px;
-            font-weight: bold;
-        }
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .035;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
 
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-        .nav-links a {
-            opacity: 0.7;
-            transition: 0.3s;
-        }
+/* NAV */
 
-        .nav-links a:hover {
-            opacity: 1;
-            color: #9b1c31;
-        }
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 
-        /* HERO */
+    padding: 22px 7%;
 
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 100px 25px 60px;
-            position: relative;
-            overflow: hidden;
-        }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(120, 15, 35, 0.16), transparent 70%);
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+    background: rgba(8,8,8,.65);
+    backdrop-filter: blur(14px);
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            animation: fadeUp 1.5s ease;
-        }
+    border-bottom: 1px solid rgba(255,255,255,.04);
+}
 
-        .eyebrow {
-            font-family: Arial, sans-serif;
-            font-size: 11px;
-            letter-spacing: 6px;
-            color: #9b1c31;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-        }
+.logo {
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    font-weight: 500;
+}
 
-        h1 {
-            font-size: clamp(55px, 12vw, 120px);
-            line-height: 0.95;
-            letter-spacing: -4px;
-            margin-bottom: 30px;
-        }
+.nav-links {
+    display: flex;
+    gap: 28px;
 
-        .hero p {
-            font-size: 20px;
-            font-style: italic;
-            color: #aaaaaa;
-            max-width: 550px;
-            margin: auto;
-        }
+    font-family: Inter, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
 
-        .scroll {
-            margin-top: 70px;
-            font-family: Arial, sans-serif;
-            font-size: 10px;
-            letter-spacing: 4px;
-            color: #777;
-            text-transform: uppercase;
-        }
+.nav-links a {
+    color: #aaa;
+    transition: .4s;
+}
 
-        /* SECTIONS */
+.nav-links a:hover {
+    color: var(--ivory);
+}
 
-        section {
-            padding: 110px 8%;
-            max-width: 1100px;
-            margin: auto;
-        }
+/* HERO */
 
-        .section-label {
-            font-family: Arial, sans-serif;
-            color: #9b1c31;
-            letter-spacing: 4px;
-            font-size: 11px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
+.hero {
+    height: 100vh;
+    min-height: 650px;
 
-        h2 {
-            font-size: clamp(35px, 6vw, 65px);
-            line-height: 1;
-            margin-bottom: 50px;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        /* POETRY */
+    text-align: center;
 
-        .poetry-card {
-            border-left: 1px solid #9b1c31;
-            padding: 35px;
-            background: linear-gradient(90deg, #111, #0b0b0b);
-            transition: 0.4s;
-        }
+    position: relative;
+    overflow: hidden;
+}
 
-        .poetry-card:hover {
-            transform: translateX(8px);
-            border-left-width: 3px;
-        }
+.hero-glow {
+    position: absolute;
 
-        .poetry-card p {
-            font-size: clamp(22px, 4vw, 34px);
-            font-style: italic;
-            line-height: 1.6;
-        }
+    width: 600px;
+    height: 600px;
 
-        .poetry-card span {
-            display: block;
-            margin-top: 30px;
-            color: #777;
-            font-family: Arial, sans-serif;
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
+    border-radius: 50%;
 
-        /* CARDS */
+    background: radial-gradient(
+        circle,
+        rgba(100,24,39,.18),
+        transparent 68%
+    );
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
+    filter: blur(20px);
 
-        .card {
-            background: #111;
-            border: 1px solid #222;
-            padding: 40px;
-            min-height: 220px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: 0.4s;
-        }
+    animation: breathe 7s ease-in-out infinite;
+}
 
-        .card:hover {
-            border-color: #9b1c31;
-            transform: translateY(-5px);
-        }
+@keyframes breathe {
+    0%,100% {
+        transform: scale(.9);
+        opacity: .45;
+    }
 
-        .card h3 {
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
+    50% {
+        transform: scale(1.08);
+        opacity: .8;
+    }
+}
 
-        .card p {
-            color: #888;
-        }
+.hero-content {
+    position: relative;
+    z-index: 2;
 
-        .coming {
-            margin-top: 25px;
-            color: #9b1c31;
-            font-family: Arial, sans-serif;
-            font-size: 10px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
+    padding: 30px;
 
-        /* MUSIC */
+    animation: entrance 2s ease forwards;
+}
 
-        .music-box {
-            text-align: center;
-            padding: 70px 30px;
-            background: #101010;
-            border: 1px solid #222;
-        }
+@keyframes entrance {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
 
-        .music-box p {
-            color: #888;
-            margin-bottom: 30px;
-        }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        .music-button {
-            display: inline-block;
-            padding: 15px 30px;
-            border: 1px solid #9b1c31;
-            color: #eee;
-            font-family: Arial, sans-serif;
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
+.pre-title {
+    font-family: Inter, sans-serif;
 
-        .music-button:hover {
-            background: #9b1c31;
-        }
+    font-size: 9px;
+    letter-spacing: 6px;
 
-        /* INSTAGRAM */
+    color: var(--wine-light);
 
-        .instagram {
-            text-align: center;
-        }
+    text-transform: uppercase;
 
-        .instagram-handle {
-            font-size: clamp(30px, 6vw, 60px);
-            margin-bottom: 20px;
-        }
+    margin-bottom: 30px;
+}
 
-        .instagram p {
-            color: #888;
-            margin-bottom: 30px;
-        }
+.hero h1 {
+    font-size: clamp(58px, 13vw, 145px);
 
-        /* FOOTER */
+    line-height: .82;
 
-        footer {
-            text-align: center;
-            padding: 80px 20px 40px;
-            border-top: 1px solid #1d1d1d;
-            color: #555;
-        }
+    letter-spacing: -5px;
 
-        .footer-logo {
-            font-size: 25px;
-            letter-spacing: 5px;
-            color: #ddd;
-            margin-bottom: 15px;
-        }
+    font-weight: 400;
 
-        footer p {
-            font-family: Arial, sans-serif;
-            font-size: 10px;
-            letter-spacing: 2px;
-        }
+    margin-bottom: 35px;
+}
 
-        /* ANIMATION */
+.hero-sub {
+    color: var(--muted);
 
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+    font-size: clamp(19px, 3vw, 27px);
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    font-style: italic;
 
-        /* MOBILE */
+    max-width: 600px;
 
-        @media (max-width: 700px) {
+    margin: auto;
 
-            nav {
-                padding: 18px 20px;
-            }
+    line-height: 1.4;
+}
 
-            .nav-links {
-                display: none;
-            }
+.enter {
+    display: inline-block;
 
-            section {
-                padding: 80px 22px;
-            }
+    margin-top: 70px;
 
-            h1 {
-                letter-spacing: -2px;
-            }
+    font-family: Inter, sans-serif;
 
-            .cards {
-                grid-template-columns: 1fr;
-            }
+    font-size: 9px;
 
-            .poetry-card {
-                padding: 25px;
-            }
+    letter-spacing: 4px;
 
-            .poetry-card p {
-                font-size: 22px;
-            }
-        }
-    </style>
+    text-transform: uppercase;
+
+    color: #777;
+
+    animation: pulseText 3s infinite;
+}
+
+@keyframes pulseText {
+    0%,100% { opacity: .35; }
+    50% { opacity: 1; }
+}
+
+/* SECTIONS */
+
+section {
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 130px 8%;
+}
+
+.label {
+    font-family: Inter, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    color: var(--wine-light);
+
+    margin-bottom: 18px;
+}
+
+h2 {
+    font-size: clamp(42px, 7vw, 75px);
+
+    line-height: .95;
+
+    font-weight: 400;
+
+    margin-bottom: 55px;
+}
+
+/* POEM */
+
+.poem {
+    border-left: 1px solid var(--wine);
+
+    padding: 35px 35px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(100,24,39,.08),
+            transparent
+        );
+
+    transition: .5s;
+}
+
+.poem:hover {
+    border-left-color: var(--wine-light);
+
+    transform: translateX(7px);
+}
+
+.poem p {
+    font-size: clamp(24px, 4vw, 38px);
+
+    font-style: italic;
+
+    line-height: 1.55;
+}
+
+.poem-author {
+    display: block;
+
+    margin-top: 30px;
+
+    font-family: Inter, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: #666;
+
+    text-transform: uppercase;
+}
+
+/* ABOUT */
+
+.about {
+    max-width: 800px;
+}
+
+.about p {
+    font-size: clamp(21px, 3vw, 29px);
+
+    line-height: 1.65;
+
+    color: #c3beb7;
+
+    margin-bottom: 35px;
+}
+
+.about strong {
+    color: var(--ivory);
+
+    font-weight: 500;
+}
+
+.about-emphasis {
+    font-size: clamp(34px, 6vw, 65px) !important;
+
+    color: var(--ivory) !important;
+
+    font-style: italic;
+
+    margin: 70px 0 !important;
+}
+
+/* CARDS */
+
+.cards {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+.card {
+    min-height: 260px;
+
+    padding: 35px;
+
+    background: var(--black-soft);
+
+    border: 1px solid var(--line);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    transition: .5s;
+}
+
+.card:hover {
+    border-color: var(--wine);
+
+    transform: translateY(-6px);
+}
+
+.card h3 {
+    font-size: 30px;
+
+    font-weight: 400;
+
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: var(--muted);
+
+    font-size: 17px;
+
+    line-height: 1.6;
+}
+
+.coming {
+    font-family: Inter, sans-serif;
+
+    color: var(--wine-light);
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+/* MUSIC */
+
+.music {
+    text-align: center;
+
+    padding: 100px 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(100,24,39,.12),
+            transparent 65%
+        );
+
+    border-top: 1px solid var(--line);
+
+    border-bottom: 1px solid var(--line);
+}
+
+.music h3 {
+    font-size: clamp(35px,6vw,65px);
+
+    font-weight: 400;
+
+    margin-bottom: 20px;
+}
+
+.music p {
+    color: var(--muted);
+
+    font-size: 18px;
+
+    margin-bottom: 35px;
+}
+
+.button {
+    display: inline-block;
+
+    padding: 14px 28px;
+
+    border: 1px solid var(--wine);
+
+    font-family: Inter, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    transition: .4s;
+}
+
+.button:hover {
+    background: var(--wine);
+
+    border-color: var(--wine);
+}
+
+/* INSTAGRAM */
+
+.instagram {
+    text-align: center;
+}
+
+.handle {
+    font-size: clamp(35px, 7vw, 75px);
+
+    margin-bottom: 20px;
+}
+
+.instagram p {
+    color: var(--muted);
+
+    margin-bottom: 35px;
+
+    font-size: 18px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+
+    padding: 100px 20px 45px;
+
+    border-top: 1px solid var(--line);
+}
+
+.footer-logo {
+    font-family: Inter, sans-serif;
+
+    font-size: 13px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+}
+
+.footer-line {
+    color: #555;
+
+    font-style: italic;
+
+    font-size: 18px;
+
+    margin-bottom: 35px;
+}
+
+.copyright {
+    font-family: Inter, sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color: #444;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    nav {
+        padding: 18px 20px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    section {
+        padding: 95px 22px;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+
+    .hero-glow {
+        width: 350px;
+        height: 350px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .poem {
+        padding: 25px;
+    }
+
+    .about p {
+        font-size: 21px;
+    }
+
+}
+</style>
 </head>
 
 <body>
 
-    <nav>
-        <div class="logo">DEADHEART SOUL</div>
+<!-- NAV -->
 
-        <div class="nav-links">
-            <a href="#poetry">Poetry</a>
-            <a href="#music">Music</a>
-            <a href="#shop">Shop</a>
-            <a href="#instagram">Instagram</a>
+<nav>
+
+    <div class="logo">
+        DEADHEART SOUL
+    </div>
+
+    <div class="nav-links">
+        <a href="#poetry">Poetry</a>
+        <a href="#about">About</a>
+        <a href="#music">Music</a>
+        <a href="#shop">Shop</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+    <div class="hero-glow"></div>
+
+    <div class="hero-content">
+
+        <div class="pre-title">
+            Poetry • Music • Life
         </div>
-    </nav>
+
+        <h1>
+            DEADHEART<br>
+            SOUL
+        </h1>
+
+        <div class="hero-sub">
+            A soul that thought it had died,
+            and found a reason to keep writing.
+        </div>
+
+        <a href="#poetry" class="enter">
+            Enter the soul ↓
+        </a>
+
+    </div>
+
+</header>
 
 
-    <!-- HERO -->
+<!-- POETRY -->
 
-    <header class="hero">
+<section id="poetry">
 
-        <div class="hero-content">
+    <div class="label">
+        A piece of me
+    </div>
 
-            <div class="eyebrow">
-                Poetry • Music • Emotion
+    <h2>
+        Latest Poetry
+    </h2>
+
+    <div class="poem">
+
+        <p>
+            “Ek napaak sheh mein rakhi thi
+            mohabbat uski...<br>
+            Wuzu bhi hota toh toot jata.”
+        </p>
+
+        <span class="poem-author">
+            — DeadHeart Soul
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="label">
+        The story behind the soul
+    </div>
+
+    <h2>
+        It started in 2018.
+    </h2>
+
+    <div class="about">
+
+        <p>
+            Not with a plan.
+            Not with a dream of becoming a writer.
+        </p>
+
+        <p>
+            It started when life became difficult enough
+            that <strong>words were easier to write than to speak.</strong>
+        </p>
+
+        <p>
+            Things at home weren't right.
+            Things inside me weren't right either.
+            There were problems I didn't know how to solve,
+            feelings I didn't know how to explain,
+            and a kind of helplessness that slowly teaches
+            you to stay quiet.
+        </p>
+
+        <p>
+            I wasn't the kind of person who could sit down
+            and tell someone,
+        </p>
+
+        <p class="about-emphasis">
+            “I'm not okay.”
+        </p>
+
+        <p>
+            Not even the people closest to me.
+        </p>
+
+        <p>
+            So I found another way.
+        </p>
+
+        <p class="about-emphasis">
+            I started writing.
+        </p>
+
+        <p>
+            At first, I wasn't good at it.
+            But I kept going.
+        </p>
+
+        <p>
+            Because when you can't say something to another person,
+            sometimes a blank page becomes the only place
+            where you can finally be honest.
+        </p>
+
+        <p>
+            One page became another.
+            One thought became another.
+            And somewhere between the words,
+            I started leaving pieces of myself behind.
+        </p>
+
+        <p>
+            Years passed.
+        </p>
+
+        <p>
+            Around <strong>500 posts later</strong>,
+            I realised something.
+        </p>
+
+        <p class="about-emphasis">
+            I wasn't just writing anymore.
+        </p>
+
+        <p>
+            I had built a place where everything I couldn't say
+            had a voice.
+        </p>
+
+        <p>
+            And that place became
+            <strong>DeadHeart Soul.</strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- WHY DEADHEART -->
+
+<section>
+
+    <div class="label">
+        Why this name?
+    </div>
+
+    <h2>
+        Why a Dead Heart?
+    </h2>
+
+    <div class="about">
+
+        <p>
+            There was a time when I felt like I had seen
+            and felt enough to become numb.
+        </p>
+
+        <p class="about-emphasis">
+            Not sad.<br>
+            Not angry.<br>
+            Just... empty.
+        </p>
+
+        <p>
+            And when you feel nothing for long enough,
+            it starts feeling like something inside you has died.
+        </p>
+
+        <p>
+            So I gave that feeling a name.
+        </p>
+
+        <p class="about-emphasis">
+            DeadHeart Soul.
+        </p>
+
+        <p>
+            A soul that feels dead —
+            but has seen enough life to remember everything.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- WHAT YOU'LL FIND -->
+
+<section>
+
+    <div class="label">
+        More than poetry
+    </div>
+
+    <h2>
+        Everything<br>
+        I Feel.
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div>
+                <h3>Love</h3>
+
+                <p>
+                    The things we say,
+                    the things we don't,
+                    and everything that remains.
+                </p>
             </div>
 
-            <h1>
-                DEADHEART<br>
-                SOUL
-            </h1>
-
-            <p>
-                Where broken hearts become poetry.
-            </p>
-
-            <div class="scroll">
-                Scroll to feel
+            <div class="coming">
+                Words
             </div>
 
         </div>
 
-    </header>
 
+        <div class="card">
 
-    <!-- POETRY -->
+            <div>
+                <h3>Life</h3>
 
-    <section id="poetry">
-
-        <div class="section-label">
-            A piece of me
-        </div>
-
-        <h2>
-            Latest Poetry
-        </h2>
-
-        <div class="poetry-card">
-
-            <p>
-                “Ek napaak sheh mein rakhi thi
-                mohabbat uski...<br>
-                Wuzu bhi hota toh toot jata.”
-            </p>
-
-            <span>
-                — DeadHeart Soul
-            </span>
-
-        </div>
-
-    </section>
-
-
-    <!-- POETRY COLLECTION -->
-
-    <section>
-
-        <div class="section-label">
-            Words I couldn't say
-        </div>
-
-        <h2>
-            Poetry
-        </h2>
-
-        <div class="cards">
-
-            <div class="card">
-
-                <div>
-                    <h3>
-                        The Things We Never Said
-                    </h3>
-
-                    <p>
-                        Some feelings are too heavy
-                        to be spoken.
-                    </p>
-                </div>
-
-                <div class="coming">
-                    Coming Soon
-                </div>
-
+                <p>
+                    The beautiful,
+                    the painful,
+                    and everything between.
+                </p>
             </div>
 
-
-            <div class="card">
-
-                <div>
-                    <h3>
-                        Letters To Nobody
-                    </h3>
-
-                    <p>
-                        Letters written for people
-                        who stopped listening.
-                    </p>
-                </div>
-
-                <div class="coming">
-                    Coming Soon
-                </div>
-
+            <div class="coming">
+                Thoughts
             </div>
 
         </div>
 
-    </section>
+
+        <div class="card">
+
+            <div>
+                <h3>India</h3>
+
+                <p>
+                    A country, its people,
+                    its contradictions,
+                    and the stories around us.
+                </p>
+            </div>
+
+            <div class="coming">
+                Soon
+            </div>
+
+        </div>
 
 
-    <!-- MUSIC -->
+        <div class="card">
 
-    <section id="music">
+            <div>
+                <h3>Everything Else</h3>
 
-        <div class="section-label">
+                <p>
+                    Because life refuses
+                    to fit inside a category.
+                </p>
+            </div>
+
+            <div class="coming">
+                Coming Soon
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MUSIC -->
+
+<section id="music">
+
+    <div class="music">
+
+        <div class="label">
             Sound of the soul
         </div>
 
-        <h2>
-            Music
-        </h2>
-
-        <div class="music-box">
-
-            <h3>
-                Listen to DeadHeart Soul
-            </h3>
-
-            <p>
-                Poetry has a voice too.
-            </p>
-
-            <a href="#" class="music-button">
-                Music Coming Soon
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- SHOP -->
-
-    <section id="shop">
-
-        <div class="section-label">
-            Carry the words
-        </div>
-
-        <h2>
-            Shop
-        </h2>
-
-        <div class="cards">
-
-            <div class="card">
-
-                <div>
-                    <h3>
-                        Poetry Books
-                    </h3>
-
-                    <p>
-                        Stories, verses and feelings
-                        turned into something you can hold.
-                    </p>
-                </div>
-
-                <div class="coming">
-                    Coming Soon
-                </div>
-
-            </div>
-
-
-            <div class="card">
-
-                <div>
-                    <h3>
-                        DeadHeart Merchandise
-                    </h3>
-
-                    <p>
-                        Wear the words you couldn't say.
-                    </p>
-                </div>
-
-                <div class="coming">
-                    Coming Soon
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- INSTAGRAM -->
-
-    <section id="instagram" class="instagram">
-
-        <div class="section-label">
-            Follow the journey
-        </div>
-
-        <div class="instagram-handle">
-            @deadheartsoul
-        </div>
+        <h3>
+            Poetry has a voice too.
+        </h3>
 
         <p>
-            Poetry, music and pieces of a restless soul.
+            Music coming soon.
         </p>
 
-        <a href="#" class="music-button">
-            Instagram
+        <a href="#" class="button">
+            Listen
         </a>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- FOOTER -->
+<!-- SHOP -->
 
-    <footer>
+<section id="shop">
 
-        <div class="footer-logo">
-            DEADHEART SOUL
+    <div class="label">
+        Carry the words
+    </div>
+
+    <h2>
+        Shop
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div>
+
+                <h3>
+                    Poetry Books
+                </h3>
+
+                <p>
+                    Words you can hold onto.
+                </p>
+
+            </div>
+
+            <div class="coming">
+                Coming Soon
+            </div>
+
         </div>
 
-        <p>
-            Where broken hearts become poetry.
-        </p>
 
-        <br>
+        <div class="card">
 
-        <p>
-            © 2026 DeadHeart Soul
-        </p>
+            <div>
 
-    </footer>
+                <h3>
+                    DeadHeart Merchandise
+                </h3>
+
+                <p>
+                    Wear what you couldn't say.
+                </p>
+
+            </div>
+
+            <div class="coming">
+                Coming Soon
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INSTAGRAM -->
+
+<section class="instagram">
+
+    <div class="label">
+        Find me outside these walls
+    </div>
+
+    <div class="handle">
+        @deadheartsoul
+    </div>
+
+    <p>
+        More words. More music. More pieces of the soul.
+    </p>
+
+    <a href="#" class="button">
+        Instagram
+    </a>
+
+</section>
+
+
+<!-- END -->
+
+<footer>
+
+    <div class="footer-logo">
+        DEADHEART SOUL
+    </div>
+
+    <div class="footer-line">
+        If you felt something here,
+        maybe you weren't just reading.
+    </div>
+
+    <div class="footer-line">
+        Come back when you have something
+        you can't say.
+    </div>
+
+    <div class="copyright">
+        © 2026 DEADHEART SOUL
+    </div>
+
+</footer>
 
 </body>
 </html>
