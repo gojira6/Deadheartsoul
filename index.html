@@ -14,7 +14,64 @@ content="DeadHeart Soul — an archive of poetry, thoughts, music and things lef
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+/* TONIGHT'S LINE */
 
+.tonight-line{
+margin-top:40px;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:12px;
+}
+
+.tonight-label{
+font-size:8px;
+letter-spacing:4px;
+text-transform:uppercase;
+color:var(--wine2);
+}
+
+.featured-line{
+font-family:"Playfair Display",serif;
+font-style:italic;
+font-size:clamp(18px,2.4vw,24px);
+max-width:520px;
+line-height:1.6;
+color:#d7cfc3;
+transition:opacity .8s ease;
+}
+
+/* PARTICLES */
+
+.particles{
+position:absolute;
+inset:0;
+overflow:hidden;
+pointer-events:none;
+}
+
+.particle{
+position:absolute;
+width:2px;
+height:2px;
+border-radius:50%;
+background:rgba(232,225,214,.45);
+animation:float linear infinite;
+}
+
+@keyframes float{
+from{
+transform:translateY(120vh) scale(.5);
+opacity:0;
+}
+15%{
+opacity:.8;
+}
+to{
+transform:translateY(-20vh) scale(1.2);
+opacity:0;
+}
+}
 <style>
 
 /* =========================================================
@@ -1748,7 +1805,40 @@ footer {
 </style>
 </head>
 
+<script>
 
+const lines=[
+"“Bujhta jaa raha hai jalta chiraagh mera.”",
+"“Adhoori chahat bhi adhoore tum hi nahi.”",
+"“Bol ke lab azaad hain tere.”",
+"“Ye ishq hai na... bas ruka hua hai.”",
+"“Main apni hi nazron mein adhoora ho gaya hoon.”"
+];
+
+const featured=document.getElementById("featuredLine");
+featured.textContent=lines[Math.floor(Math.random()*lines.length)];
+
+const particles=document.getElementById("particles");
+
+for(let i=0;i<55;i++){
+
+const p=document.createElement("span");
+
+p.className="particle";
+
+p.style.left=Math.random()*100+"%";
+
+p.style.animationDuration=(12+Math.random()*10)+"s";
+
+p.style.animationDelay=Math.random()*8+"s";
+
+p.style.opacity=Math.random();
+
+particles.appendChild(p);
+
+}
+
+</script>
 <body>
 
 
@@ -1802,7 +1892,7 @@ footer {
      HERO
      ===================================================== -->
 
-<header class="hero">
+<header class="hero"><div class="particles" id="particles"></div>
 
     <div class="hero-content">
 
@@ -1824,7 +1914,17 @@ footer {
 
         <div class="creator">
             by Suhail Anjum
-        </div>
+        </div><div class="tonight-line">
+
+    <div class="tonight-label">
+        Tonight's Line
+    </div>
+
+    <div id="featuredLine" class="featured-line">
+        "Bujhta jaa raha hai jalta chiraagh mera."
+    </div>
+
+</div>
 
         <a href="#poetry" class="enter">
 
