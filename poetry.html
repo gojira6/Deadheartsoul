@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Poetry — DeadHeart Soul | Suhail Anjum</title>
+
+<meta name="description" content="Poetry and writings by Suhail Anjum — DeadHeart Soul.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --black:#070707;
+    --black2:#0d0c0c;
+    --ivory:#eee7dc;
+    --soft:#b6afa5;
+    --muted:#706b65;
+    --wine:#5b1826;
+    --wine2:#8b3043;
+    --line:rgba(238,231,220,.10);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--black);
+    color:var(--ivory);
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
+}
+
+/* GRAIN */
+
+body:after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:9999;
+    opacity:.035;
+
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* NAV */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+
+    padding:25px 6%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    z-index:1000;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(7,7,7,.95),
+        transparent
+    );
+}
+
+.logo{
+    font-size:10px;
+    letter-spacing:5px;
+}
+
+.back{
+    font-size:9px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--muted);
+    transition:.4s;
+}
+
+.back:hover{
+    color:var(--ivory);
+}
+
+/* HERO */
+
+.archive-hero{
+    min-height:78vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.archive-hero:before{
+    content:"";
+
+    position:absolute;
+
+    width:650px;
+    height:650px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+        circle,
+        rgba(91,24,38,.23),
+        transparent 68%
+    );
+
+    animation:breathe 9s ease-in-out infinite;
+}
+
+@keyframes breathe{
+
+    0%,100%{
+        transform:scale(.8);
+        opacity:.4;
+    }
+
+    50%{
+        transform:scale(1.15);
+        opacity:.8;
+    }
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    padding:30px;
+
+    animation:heroIn 1.5s ease both;
+}
+
+@keyframes heroIn{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.kicker{
+    font-size:8px;
+    letter-spacing:6px;
+    color:var(--wine2);
+    text-transform:uppercase;
+    margin-bottom:30px;
+}
+
+.archive-title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:300;
+
+    font-size:clamp(70px,13vw,160px);
+
+    line-height:.75;
+    letter-spacing:-5px;
+}
+
+.archive-sub{
+    margin:40px auto 0;
+
+    font-family:"Playfair Display",serif;
+    font-style:italic;
+
+    font-size:clamp(18px,3vw,26px);
+
+    color:var(--soft);
+
+    max-width:650px;
+
+    line-height:1.5;
+}
+
+.author{
+    margin-top:30px;
+
+    font-size:8px;
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:var(--muted);
+}
+
+/* ARCHIVE INFO */
+
+.archive-meta{
+    display:flex;
+    justify-content:center;
+    gap:35px;
+
+    margin-top:35px;
+
+    font-size:8px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+
+    color:var(--muted);
+}
+
+.archive-meta span{
+    color:var(--wine2);
+}
+
+/* FILTERS */
+
+.filters-wrap{
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:20px 7% 80px;
+
+    text-align:center;
+}
+
+.filter-title{
+    font-size:8px;
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:var(--muted);
+
+    margin-bottom:22px;
+}
+
+.filters{
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+.filter{
+    appearance:none;
+
+    background:transparent;
+
+    color:var(--muted);
+
+    border:1px solid var(--line);
+
+    padding:12px 18px;
+
+    font-family:"DM Sans",sans-serif;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    cursor:pointer;
+
+    transition:.4s;
+}
+
+.filter:hover,
+.filter.active{
+    background:var(--wine);
+
+    border-color:var(--wine2);
+
+    color:var(--ivory);
+
+    transform:translateY(-2px);
+}
+
+/* RANDOM */
+
+.random-wrap{
+    text-align:center;
+
+    margin-top:28px;
+}
+
+.random-btn{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:13px 22px;
+
+    border:1px solid var(--wine);
+
+    color:var(--soft);
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    background:transparent;
+
+    cursor:pointer;
+
+    transition:.5s;
+}
+
+.random-btn:hover{
+    background:var(--wine);
+
+    color:var(--ivory);
+
+    box-shadow:0 0 30px rgba(91,24,38,.25);
+}
+
+/* ARCHIVE */
+
+.archive{
+    max-width:1000px;
+
+    margin:auto;
+
+    padding:0 7% 150px;
+}
+
+/* POEM CARD */
+
+.poem-card{
+    position:relative;
+
+    padding:90px 0;
+
+    border-top:1px solid var(--line);
+
+    opacity:0;
+
+    transform:translateY(35px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease,
+        filter .5s ease;
+
+    scroll-margin-top:80px;
+}
+
+.poem-card.visible{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+.poem-card.hidden{
+    display:none;
+}
+
+/* HOVER */
+
+.poem-card:hover .poem-number{
+    letter-spacing:6px;
+}
+
+.poem-number{
+    font-size:8px;
+
+    letter-spacing:4px;
+
+    color:var(--wine2);
+
+    margin-bottom:20px;
+
+    transition:.4s;
+}
+
+.poem-category{
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:var(--muted);
+
+    margin-bottom:30px;
+}
+
+.poem-title{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(40px,6vw,72px);
+
+    font-weight:400;
+
+    line-height:1;
+
+    margin-bottom:42px;
+}
+
+.poem-text{
+    max-width:720px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(21px,3vw,30px);
+
+    line-height:1.75;
+
+    color:#ddd5c9;
+}
+
+.poem-text em{
+    color:var(--ivory);
+}
+
+.poem-author{
+    margin-top:42px;
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:36px;
+
+    color:var(--soft);
+
+    opacity:.9;
+}
+
+/* TRANSLATION */
+
+.translation{
+    margin-top:55px;
+
+    padding:35px;
+
+    border-left:1px solid var(--wine);
+
+    background:rgba(255,255,255,.018);
+
+    position:relative;
+}
+
+.translation:before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-1px;
+
+    height:35px;
+
+    width:1px;
+
+    background:var(--wine2);
+
+}
+
+.translation-label{
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:var(--wine2);
+
+    margin-bottom:18px;
+}
+
+.translation p{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:25px;
+
+    line-height:1.6;
+
+    color:var(--soft);
+}
+
+/* READING MODE */
+
+.reading-mode .poem-card{
+    filter:brightness(.35);
+}
+
+.reading-mode .poem-card.focused{
+    filter:brightness(1);
+
+    transform:scale(1.01);
+
+    transition:1s;
+}
+
+/* SPECIAL LAST LINE */
+
+.poem-ending{
+    margin-top:45px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-style:italic;
+
+    font-size:clamp(30px,4vw,48px);
+
+    line-height:1.35;
+
+    color:var(--ivory);
+}
+
+/* EMPTY */
+
+.empty-message{
+    display:none;
+
+    text-align:center;
+
+    padding:100px 20px;
+
+    color:var(--muted);
+
+    font-family:"Playfair Display",serif;
+
+    font-style:italic;
+
+    font-size:22px;
+}
+
+/* SIGNATURE */
+
+.archive-signature{
+    text-align:right;
+
+    padding:80px 5% 20px;
+
+    border-top:1px solid var(--line);
+}
+
+.signature-name{
+    font-family:"Great Vibes",cursive;
+
+    font-size:55px;
+
+    color:var(--ivory);
+
+    transform:rotate(-3deg);
+
+    display:inline-block;
+}
+
+.signature-line{
+    width:100px;
+
+    height:1px;
+
+    background:var(--wine2);
+
+    margin:10px 0 10px auto;
+}
+
+.signature-role{
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:var(--muted);
+}
+
+/* BACK TOP */
+
+.back-top{
+    position:fixed;
+
+    right:22px;
+
+    bottom:22px;
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    border:1px solid var(--wine);
+
+    background:rgba(7,7,7,.85);
+
+    color:var(--soft);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.4s;
+
+    z-index:2000;
+}
+
+.back-top.show{
+    opacity:1;
+
+    visibility:visible;
+}
+
+.back-top:hover{
+    background:var(--wine);
+
+    color:var(--ivory);
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+
+    padding:120px 20px 50px;
+
+    border-top:1px solid var(--line);
+}
+
+.footer-title{
+    font-size:10px;
+
+    letter-spacing:6px;
+
+    margin-bottom:25px;
+}
+
+.footer-line{
+    font-family:"Playfair Display",serif;
+
+    font-style:italic;
+
+    color:var(--muted);
+
+    font-size:19px;
+
+    margin-bottom:8px;
+}
+
+.footer-author{
+    margin-top:50px;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    color:#444;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    nav{
+        padding:20px;
+    }
+
+    .archive-hero{
+        min-height:72vh;
+    }
+
+    .archive-title{
+        font-size:20vw;
+
+        letter-spacing:-3px;
+    }
+
+    .archive-sub{
+        font-size:20px;
+    }
+
+    .archive-meta{
+        gap:18px;
+        flex-wrap:wrap;
+    }
+
+    .filters-wrap{
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .archive{
+        padding-left:22px;
+        padding-right:22px;
+    }
+
+    .poem-card{
+        padding:70px 0;
+    }
+
+    .poem-text{
+        font-size:22px;
+
+        line-height:1.7;
+    }
+
+    .translation{
+        padding:25px;
+    }
+
+    .translation p{
+        font-size:22px;
+    }
+
+    .signature-name{
+        font-size:48px;
+    }
+
+    .archive-signature{
+        text-align:center;
+        padding-right:0;
+    }
+
+    .signature-line{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+    <a href="index.html" class="logo">
+        DEADHEART SOUL
+    </a>
+
+    <a href="index.html" class="back">
+        ← Back to soul
+    </a>
+
+</nav>
+
+
+<header class="archive-hero">
+
+    <div class="hero-content">
+
+        <div class="kicker">
+            The Archive · I
+        </div>
+
+        <h1 class="archive-title">
+            WORDS
+        </h1>
+
+        <div class="archive-sub">
+            Things I couldn't say aloud,
+            so I taught them how to live on paper.
+        </div>
+
+        <div class="author">
+            Suhail Anjum
+        </div>
+
+        <div class="archive-meta">
+            <div><span>10</span> pieces</div>
+            <div><span>2018—2026</span></div>
+            <div><span>01</span> soul</div>
+        </div>
+
+    </div>
+
+</header>
+
+
+<section class="filters-wrap">
+
+    <div class="filter-title">
+        Browse the archive
+    </div>
+
+    <div class="filters">
+
+        <button class="filter active" data-filter="all">
+            All
+        </button>
+
+        <button class="filter" data-filter="love">
+            Love
+        </button>
+
+        <button class="filter" data-filter="heartbreak">
+            Heartbreak
+        </button>
+
+        <button class="filter" data-filter="pain">
+            Pain
+        </button>
+
+        <button class="filter" data-filter="life">
+            Life
+        </button>
+
+        <button class="filter" data-filter="india">
+            India
+        </button>
+
+        <button class="filter" data-filter="punjabi">
+            Punjabi
+        </button>
+
+    </div>
+
+    <div class="random-wrap">
+
+        <button class="random-btn" id="randomBtn">
+            ✦ Give me something to read
+        </button>
+
+    </div>
+
+</section>
+
+
+<main class="archive">
+
+
+<!-- 001 -->
+
+<article class="poem-card" data-category="love">
+
+    <div class="poem-number">001</div>
+
+    <div class="poem-category">
+        Love · Hindi / Urdu
+    </div>
+
+    <h2 class="poem-title">
+        Adhoori Chahat
+    </h2>
+
+    <div class="poem-text">
+
+        Adhoori chahat bhi adhoore tum hi nahi,<br>
+        Sawal sab mere galat, jawab ek sahi nahi.<br><br>
+
+        Ab toh duniya bhi kitni haseen ho gayi hai,<br>
+        Maine ghar saja rakha, tum aakar raho toh sahi.
+
+    </div>
+
+    <div class="poem-author">
+        — Suhail Anjum
+    </div>
+
+</article>
+
+
+<!-- 002 -->
+
+<article class="poem-card" data-category="love">
+
+    <div class="poem-number">002</div>
+
+    <div class="poem-category">
+        Love · Hindi / Urdu
+    </div>
+
+    <h2 class="poem-title">
+        Aarzoo
+    </h2>
+
+    <div class="poem-text">
+
+        Bankar aarzoo meri, poore hue kiske saath?<br>
+        Karke baatein gehri, toote bade mere khwaab.<br><br>
+
+        Na manzil suni meri, na safar ka hai maza,<br>
+        Hum bas mein kar rahe the, tumne pakda hi nahi haath.
+
+    </div>
+
+    <div class="poem-author">
+        — Suhail Anjum
+    </div>
+
+</article>
+
+
+<!-- 003 -->
+
+<article class="poem-card" data-category="heartbreak">
+
+    <div class="poem-number">003</div>
+
+    <div class="poem-category">
+        Heartbreak
+    </div>
+
+    <h2 class="poem-title">
+        Kabza
+    </h2>
+
+    <div class="poem-text">
+
+        Tera jaana aasaan lagta hi hoga tujhe,<br>
+        Mere bina waqt bitana bhi aasaan laga hoga.<br><br>
+
+        Par woh main nahi tha jisne teri rooh kabze mein karke rakhi thi,<br>
+        Woh tu thi jisne mera kabza karke rakha tha.
+
+    </div>
+
+    <div class="poem-author">
+        — Suhail Anjum
+    </div>
+
+</article>
+
+
+<!-- 004 -->
+
+<article class="poem-card" data-category="love">
+
+    <div class="poem-number">004</div>
+
+    <div class="poem-category">
+        Love · English
+    </div>
+
+    <h2 class="poem-title">
+        All of Me
+    </h2>
+
+    <div class="poem-text">
+
+        Not the polite little smile.<br>
+        The proper one.<br>
+        The one that reaches your eyes.<br>
+        The one I'll know<br>
+        because I put it there.<br><br>
+
+        Then I'll hold out my hands,<br>
+        pull you back up,<br>
+        dust you down,<br>
+        check you're okay.<br><br>
+
+        To catch you when you stumble.<br>
+        To steady you when you sway.<br>
+        And when the road gets rough,<br>
+        to keep walking.<br><br>
+
+        <em>Beside you.</em><br><br>
+
+        I promise never to hide my true colours from you.<br><br>
+
+        The loud ones.<br>
+        The weird ones.<br>
+        The ridiculous ones.<br>
+        The ones that clash spectacularly<br>
+        and really shouldn't work together.<br><br>
+
+        I promise you'll get all of me.<br><br>
+
+        The serious me.<br>
+        The silly me.<br>
+        The stubborn me.<br>
+        The soft me.<br>
+        The "I'm definitely right" me—<br><br>
+
+        Because amongst all the colours,<br>
+        all the chaos,<br>
+        all the laughter,<br>
+        all the arguments,<br>
+        all the weirdness…<br><br>
+
+        somehow,<br><br>
+
+        <em>you and me<br>
+        just make sense.</em>
+
+    </div>
+
+    <div class="poem-author">
+        — Suhail Anjum
+    </div>
+
+</article>
+
+
+<!-- 005 -->
+
+<article class="poem-card" data-category="india">
+
+    <div class="poem-number">005</div>
+
+    <div class="poem-category">
+        India · Resistance
+    </div>
+
+    <h2 class="poem-title">
+        Bol
+    </h2>
+
+    <div class="poem-text">
+
+        Bol, ke lab azaad hain tere,<br>
+        Bol, zubaan ab tak teri hai.<br><br>
+
+        Bol, ye dil lagta nahi ab yahan,<br>
+        Bol, saza ab ye teri hai.<br><br>
+
+        Bol, sehna nahi hai galat tujhe,<br>
+        Bol, ab ye teri marzi hai.<br><br>
+
+        Bol, desh ko desh samjho,<br>
+        Bol, izzat kamayi hui teri hai.<br><br>
+
+        Bol, mujhe tu insaaf dega,<br>
+        Bol, tere haathon mein insaaf ki ghadi hai.<br><br>
+
+        Bol, ke ye thoda waqt bahut hai,<br>
+        Bol, ye marne se pehle…<br><br>
+
+        Bol, ke lab azaad hain tere,<br>
+        Bol, zubaan ab tak teri hai.<br>
+        Bol, ke jaan ab tak teri hai.
+
+    </div>
+
+    <div class="poem-author">
+        — Suhail Anjum
+    </div>
+
+</article>
+
+
+<!-- 006 -->
+
+<article class="poem-card" data-category="love">
+
+    <div class="poem-number">006</div>
+
+    <div class="poem-category">
+        Love · English
+    </div>
+
+    <h2 class="poem-title">
+        Before Time
+    </h2>
+
+    <div class="poem-text">
+
+        I often question the logic of fate and destiny,
+        but there is no part of my love for you
+        that could not have been written before time
+        was even half a thought.<br><br>
+
+        Before we were people you could hold
+        and be held by,
+        my atoms knew and loved yours.<br><br>
+
+        When we were stardust on the lips of something
+        before breath,
+        we kissed with each word that spoke us
+        into existence.<br><br>
+
+        If there is no string of fate that connects us,
+        I will craft one twined with my heartstrings
+        and vocal cords,
+        so that I may love you loudly.<br><br>
+
+        I will loop it around our hands and hearts,
+        then double-knot it for good measure.<br><br>
+
+        If you were not made for me,
+        then I will make myself to be made yours.<br><br>
+
+        If I choose to be nothing else,
+        I choose to be yours.
+
+    </div>
+
+    <div class="poem-author">
+        — Suhail Anjum
+    </div>
+
+</article>
+
+
+<!-- 007 -->
+
+<article class="poem-card" data-category="pain">
+
+    <div class="poem-number">007</div>
+
+    <div class="poem-category">
+        Pain
+    </div>
+
+    <h2 class="poem-title">
+        Ek Baar
+    </h2>
+
+    <div class="poem-text">
+
+        Ek baar toh pooch le haal mera,<br>
+        Dil rooh kheench raha hai filhaal mera.<br><br>
+
+        Ab toh waqt bhi ro deta hai saath mere,<br>
+        Bujhta jaa raha hai jalta chiraagh mera.
+
+    </div>
+
+    <div class="poem-author">
+        — Suhail Anjum
+    </div>
+
+</article>
+
+
+<!-- 008 -->
+
+<article class="poem-card" data-category="heartbreak">
+
+    <div class="poem-number">008</div>
+
+    <div class="poem-category">
+        Ishq · Long Form
+    </div>
+
+    <h2 class="poem-title">
+        Ruka Hua Ishq
+    </h2>
+
+    <div class="poem-text">
+
+        Dil rukta hi hai na,<br>
+        Jahan lag jaaye, udhar toh rukta hi hai.<br><br>
+
+        Mere khayal, mere jazbaat,<br>
+        Bas wahi ruke hue hain jahan<br>
+        dil ruka hua hai.<br><br>
+
+        Tere paas hi rakha hai,<br>
+        Ijaazat dena tera hi kaam hai.<br>
+        Magar ye ishq hai na…<br>
+        bas ruka hua hai.<br><br>
+
+        Tera jaana aasaan lagta hi hoga tujhe,<br>
+        Mere bina waqt bitana bhi aasaan laga hoga.<br><br>
+
+        Par woh main nahi tha jisne teri rooh kabze mein karke rakhi thi,<br>
+        Woh tu thi jisne mera kabza karke rakha tha.<br><br>
+
+        Tu chahe aage badh jaaye,<br>
+        Tu chahe dil badal le,<br>
+        Tu rakh le jo tujhe rakhna ho is rishte se.<br><br>
+
+        Magar<br>
+        main…<br><br>
+
+        Main woh rakhunga<br>
+        jiska wada tujhse kar gaya tha.<br><br>
+
+        Bata kar hi jaunga tujhse<br>
+        mohabbat ka hashr kya tha.<br><br>
+
+        Woh ab jo na-mumkin sa ho gaya hai,<br>
+        woh ab jo zid mein har din sa ho gaya hai,<br>
+        ishq ibaadat hai — inhe samajh thodi aani hai.<br><br>
+
+        Main likhunga ab tak<br>
+        ki jo teri meri kahani hai.<br><br>
+
+        Woh dhaaga jo utaar degi na tu,<br>
+        woh dhaaga jo utaar dunga main—<br>
+        woh din aakhri ho mera,<br>
+        woh rasm aakhri ho teri.<br><br>
+
+        Ismein jo reh jaaye zinda ashaar dimaag mein,<br>
+        bas utna haq bacha hua hai.
+
+        <div class="poem-ending">
+            Ye ishq hai na…<br>
+            bas utna ruka hua hai.
+        </div>
+
+    </div>
+
+    <div class="poem-author">
+        — Suhail Anjum
+    </div>
+
+</article>
+
+
+<!-- 009 -->
+
+<article class="poem-card" data-category="pain">
+
+    <div class="poem-number">009</div>
+
+    <div class="poem-category">
+        Self · Loss
+    </div>
+
+    <h2 class="poem-title">
+        Mujhse
+    </h2>
+
+    <div class="poem-text">
+
+        Main apni hi nazron mein adhoora ho gaya hoon,<br>
+        Tumhare chale jaane ne sirf tumhe nahi,<br>
+        mujhe bhi mujhse le liya.<br><br>
+
+        Aur shayar bhi kalam tod hi dete hain aakhri muqaam par,<br>
+        maine anjaam iska barson pehle dekh liya hai.
+
+    </div>
+
+    <div class="poem-author">
+        — Suhail Anjum
+    </div>
+
+</article>
+
+
+<!-- 010 -->
+
+<article class="poem-card" data-category="punjabi">
+
+    <div class="poem-number">010</div>
+
+    <div class="poem-category">
+        Punjabi · Pain
+    </div>
+
+    <h2 class="poem-title">
+        Kede Rang
+    </h2>
+
+    <div class="poem-text">
+
+        Kade kade hun sochan lag jaavan,<br>
+        Kehde rang vich rang layi ae duniya main apni.<br><br>
+
+        Te kujh karna chaahuna, te kujh kar vi na paavaan,<br>
+        Kehde tanj vich kass layi ae duniya main apni.<br><br>
+
+        Koi haal puchhe na, te koi gale laun nu agge na aave,<br>
+        Mainu lukko ke pachhtaan reh giya soorataan,<br>
+        hun ohnu koi matthe na laave.<br><br>
+
+        Nazraan vekhan bhull gayiaan ne,<br>
+        Nazraan nu vekh ke dard chirh aunda.<br>
+        Ohde kisse yaad kar-kar ke ve,<br>
+        ankhiyan ton hanju dig aunda.<br><br>
+
+        Keeda aitbaar karaan?<br>
+        Te keenu chhad tur javaan?<br><br>
+
+        Mainu oss di sauh khawaan waleyo,<br>
+        main keedi sauh khaawan?
+
+    </div>
+
+    <div class="translation">
+
+        <div class="translation-label">
+            English Translation
+        </div>
+
+        <p>
+
+            Sometimes I sit and wonder,<br>
+            in what colours has this world painted me?<br><br>
+
+            I want to do something,<br>
+            yet sometimes I cannot do anything at all.<br>
+            In what cruelty has this world tied me down?<br><br>
+
+            No one asks how I am,<br>
+            and no one comes forward to embrace me.<br><br>
+
+            My eyes have forgotten how to look,<br>
+            because looking itself brings pain.<br>
+            Remembering those stories,<br>
+            tears fall from my eyes.<br><br>
+
+            Whom should I trust?<br>
+            And whom should I leave and walk away from?<br><br>
+
+            You who swear by their name,<br>
+            tell me — whose oath am I supposed to take?
+
+        </p>
+
+    </div>
+
+    <div class="poem-author">
+        — Suhail Anjum
+    </div>
+
+</article>
+
+
+<div class="empty-message" id="emptyMessage">
+    Nothing here yet.<br>
+    Perhaps this feeling hasn't been written.
+</div>
+
+
+<div class="archive-signature">
+
+    <div class="signature-name">
+        Suhail Anjum
+    </div>
+
+    <div class="signature-line"></div>
+
+    <div class="signature-role">
+        writer · poet · musician
+    </div>
+
+</div>
+
+
+</main>
+
+
+<button class="back-top" id="backTop" aria-label="Back to top">
+    ↑
+</button>
+
+
+<footer>
+
+    <div class="footer-title">
+        DEADHEART SOUL
+    </div>
+
+    <div class="footer-line">
+        Some words are meant to be read.
+    </div>
+
+    <div class="footer-line">
+        Some are meant to be felt.
+    </div>
+
+    <div class="footer-author">
+        Written by Suhail Anjum · © 2026
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   FILTER SYSTEM
+========================= */
+
+const filters = document.querySelectorAll(".filter");
+const poems = document.querySelectorAll(".poem-card");
+const emptyMessage = document.getElementById("emptyMessage");
+
+filters.forEach(filter => {
+
+    filter.addEventListener("click", () => {
+
+        filters.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        filter.classList.add("active");
+
+        const selected = filter.dataset.filter;
+
+        let visibleCount = 0;
+
+        poems.forEach(poem => {
+
+            const category = poem.dataset.category;
+
+            if(selected === "all" || category === selected){
+
+                poem.classList.remove("hidden");
+
+                setTimeout(() => {
+                    poem.classList.add("visible");
+                }, 50);
+
+                visibleCount++;
+
+            }else{
+
+                poem.classList.add("hidden");
+                poem.classList.remove("visible");
+
+            }
+
+        });
+
+        emptyMessage.style.display =
+            visibleCount === 0 ? "block" : "none";
+
+        window.scrollTo({
+            top:document.querySelector(".filters-wrap").offsetTop - 40,
+            behavior:"smooth"
+        });
+
+    });
+
+});
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const observer = new IntersectionObserver(
+
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("visible");
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold:.08
+    }
+
+);
+
+poems.forEach(poem => {
+
+    observer.observe(poem);
+
+});
+
+
+/* =========================
+   RANDOM POEM
+========================= */
+
+const randomBtn = document.getElementById("randomBtn");
+
+randomBtn.addEventListener("click", () => {
+
+    const visiblePoems =
+        [...poems].filter(poem =>
+            !poem.classList.contains("hidden")
+        );
+
+    if(!visiblePoems.length) return;
+
+    const random =
+        visiblePoems[
+            Math.floor(Math.random() * visiblePoems.length)
+        ];
+
+    random.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+    setTimeout(() => {
+
+        document.body.classList.add("reading-mode");
+
+        random.classList.add("focused");
+
+        setTimeout(() => {
+
+            document.body.classList.remove("reading-mode");
+
+            random.classList.remove("focused");
+
+        },2200);
+
+    },700);
+
+});
+
+
+/* =========================
+   BACK TO TOP
+========================= */
+
+const backTop = document.getElementById("backTop");
+
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 600){
+
+        backTop.classList.add("show");
+
+    }else{
+
+        backTop.classList.remove("show");
+
+    }
+
+});
+
+backTop.addEventListener("click", () => {
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+});
+
+
+/* =========================
+   POEM FOCUS ON TAP
+========================= */
+
+poems.forEach(poem => {
+
+    poem.addEventListener("click", () => {
+
+        if(window.innerWidth <= 700){
+
+            document.body.classList.add("reading-mode");
+
+            poem.classList.add("focused");
+
+            setTimeout(() => {
+
+                document.body.classList.remove("reading-mode");
+
+                poem.classList.remove("focused");
+
+            },1800);
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
