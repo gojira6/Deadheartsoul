@@ -759,41 +759,6 @@ footer{
 
 </style>
 </head>
-<script>
-
-const filters = document.querySelectorAll(".filter");
-const poems = document.querySelectorAll(".poem-card");
-
-filters.forEach(filter => {
-
-    filter.addEventListener("click", () => {
-
-        filters.forEach(btn => {
-            btn.classList.remove("active");
-        });
-
-        filter.classList.add("active");
-
-        const selected = filter.dataset.filter;
-
-        poems.forEach(poem => {
-
-            if (
-                selected === "all" ||
-                poem.dataset.category === selected
-            ) {
-                poem.style.display = "block";
-            } else {
-                poem.style.display = "none";
-            }
-
-        });
-
-    });
-
-});
-
-</script>
 
 <body>
 
